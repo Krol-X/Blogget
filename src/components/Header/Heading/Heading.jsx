@@ -1,7 +1,7 @@
 import style from './Heading.module.css'
 
-export const Heading = () => (
+export const Heading = ({text}) => (
   <div className={style.heading}>
-    Heading
+    {text || 'Blogget'}
   </div>
 );
