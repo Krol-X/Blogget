@@ -1,4 +1,5 @@
-import style from './Search.module.css'
+/* eslint-disable max-len */
+import style from './Search.module.css';
 
 export const Search = () => (
   <form className={style.form}>
