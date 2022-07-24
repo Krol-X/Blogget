@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
+import PropTypes from 'prop-types';
 import style from './Auth.module.css';
 
-export const Auth = () => (
+export const Auth = ({auth}) => (
   <button className={style.button}>
     <svg className={style.svg} width="128" height="128" viewBox="0 0 128 128" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path d="M88 48C88 54.3652 85.4714 60.4697 80.9706 64.9706C76.4697 69.4714 70.3652 72 64 72C57.6348 72 51.5303 69.4714 47.0294 64.9706C42.5286 60.4697 40 54.3652 40 48C40 41.6348 42.5286 35.5303 47.0294 31.0294C51.5303 26.5286 57.6348 24 64 24C70.3652 24 76.4697 26.5286 80.9706 31.0294C85.4714 35.5303 88 41.6348 88 48V48Z"/>
@@ -9,3 +10,7 @@ export const Auth = () => (
     </svg>
   </button>
 );
+
+Auth.propTypes = {
+  auth: PropTypes.bool
+};
