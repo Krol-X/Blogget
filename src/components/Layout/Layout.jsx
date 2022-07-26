@@ -12,5 +12,5 @@ Layout.propTypes = {
     PropTypes.string,
     PropTypes.element,
     PropTypes.array
-  ]);
+  ])
 };
