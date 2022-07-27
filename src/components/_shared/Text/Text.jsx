@@ -35,6 +35,7 @@ Text.propTypes = {
   tsize: PropTypes.number,
   className: PropTypes.string,
   children: PropTypes.oneOfType([
+    PropTypes.number,
     PropTypes.string,
     PropTypes.element,
     PropTypes.array

@@ -1,11 +1,19 @@
 import style from './Tabs.module.css';
-import Text from '../../_shared/Text';
+import PropTypes from 'prop-types';
 
-export const Tabs = (props) => (
+import Tab from './Tab';
+
+export const Tabs = ({items}) => (
+  items &&
   <ul className={style.list}>
-    <li><Text As='a' href='/'>Главная</Text></li>
-    <li><Text As='a' href='/'>Просмотренные</Text></li>
-    <li><Text As='a' href='/'>Сохранённые</Text></li>
-    <li><Text As='a' href='/'>Мои посты</Text></li>
+    {
+      items.map(({id, value, link}) => (
+        <Tab key={id} value={value} link={link} />
+      ))
+    }
   </ul>
 );
+
+Tabs.propTypes = {
+  items: PropTypes.array
+};

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import style from './Post.module.css';
+import PropTypes from 'prop-types';
 
 import Image from './Image';
 import Content from './Content';

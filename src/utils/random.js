@@ -3,4 +3,4 @@ export const generateRandomId = () =>
   Date.now().toString().substring(9);
 
 export const assignRandomId = (obj) =>
-  (Object.assign(obj, {id: generateRandomId()}))
+  (Object.assign(obj, {id: generateRandomId()}));
