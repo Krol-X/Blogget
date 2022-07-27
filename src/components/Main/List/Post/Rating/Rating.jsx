@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import style from './Rating.module.css';
+import PropTypes from 'prop-types';
 
 export const Rating = ({ups}) => (
   <div className={style.rating}>

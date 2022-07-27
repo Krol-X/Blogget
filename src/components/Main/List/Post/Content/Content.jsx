@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import style from './Content.module.css';
+import PropTypes from 'prop-types';
 
 export const Content = ({title, author}) => (
   <div className={style.content}>
