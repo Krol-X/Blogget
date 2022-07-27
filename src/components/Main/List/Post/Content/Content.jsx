@@ -4,12 +4,18 @@ import Text from '../../../../_shared/Text';
 
 export const Content = ({title, author}) => (
   <div className={style.content}>
-    <Text As='h2' className={style.title}>
-      <Text As='a' className={style.linkPost} href='#post'>
+    <h2>
+      <Text As='a' className={style.linkPost}
+        bold dsize={18}
+        href='#post'
+      >
         {title}
       </Text>
-    </Text>
-    <Text As='a' className={style.linkAuthor} href='#author'>
+    </h2>
+    <Text As='a' className={style.linkAuthor}
+      dsize={12} tsize={14} color={'orange'}
+      href='#author'
+    >
       {author}
     </Text>
   </div>

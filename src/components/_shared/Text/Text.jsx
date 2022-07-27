@@ -6,13 +6,14 @@ export const Text = (props) => {
   const {
     As = 'span',
     color = 'black',
-    size,
-    dsize,
-    tsize,
+    size, dsize, tsize,
     className,
+    center,
+    medium, bold,
     children,
     href,
-    center
+    dateTime,
+    onClick
   } = props;
 
   const classes = classNames(
@@ -21,10 +22,18 @@ export const Text = (props) => {
     {[style.center]: center},
     {[style[`fs${size}`]]: size},
     {[style[`fsd${dsize}`]]: dsize},
-    {[style[`fst${tsize}`]]: tsize}
+    {[style[`fst${tsize}`]]: tsize},
+    {[style.medium]: (medium && !bold)},
+    {[style.bold]: bold}
   );
 
-  return <As className={classes} href={href}>{children}</As>;
+  return (
+    <As className={classes} dateTime={dateTime} href={href}
+      onClick={onClick}
+    >
+      {children}
+    </As>
+  );
 };
 
 Text.propTypes = {
@@ -34,6 +43,9 @@ Text.propTypes = {
   dsize: PropTypes.number,
   tsize: PropTypes.number,
   className: PropTypes.string,
+  center: PropTypes.bool,
+  medium: PropTypes.bool,
+  bold: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
@@ -41,5 +53,6 @@ Text.propTypes = {
     PropTypes.array
   ]),
   href: PropTypes.string,
-  center: PropTypes.bool
+  dateTime: PropTypes.string,
+  onClick: PropTypes.func
 };

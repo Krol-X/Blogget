@@ -32,8 +32,6 @@
 }
 
 .ups {
-  font-weight: 700;
-  line-height: 130%;
   color: #8f8f8f;
 }
 
@@ -51,7 +49,7 @@
 
   .up:hover,
   .down:hover {
-    outline-color: #cc6633;
+    outline-color: var(--orange);
   }
 
   .rating {

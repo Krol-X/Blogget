@@ -1,6 +1,12 @@
 .center {
   text-align: center;
 }
+.medium {
+  font-weight: medium;
+}
+.bold {
+  font-weight: bold;
+}
 
 .black {
   color: var(--black);
