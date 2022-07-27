@@ -34,7 +34,7 @@
   background-color: var(--white);
 }
 .btn:hover {
-  background-color: var(--greyE6);
+  background-color: var(--grayE6);
 }
 .btn:hover svg{
   color: var(--orange)

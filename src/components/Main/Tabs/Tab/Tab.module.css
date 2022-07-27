@@ -1,7 +1,6 @@
 .item {
-  border-bottom: 1px solid var(--greyE6);
+  border-bottom: 1px solid var(--grayE6);
 }
-
 .item:last-child {
   border-bottom: 0;
 }

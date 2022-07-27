@@ -7,12 +7,12 @@ import Tab from './Tab';
 export const Tabs = ({items}) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDropdown, setIsDropdown] = useState(true);
+  const [caption, setCatpion] = useState('Меню');
 
   const handleResize = () => {
     const flag = (document.documentElement.clientWidth < 768);
     setIsDropdown(flag);
   };
-
   useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -21,6 +21,11 @@ export const Tabs = ({items}) => {
     };
   }, []);
 
+  const onItemClick = (itemValue) => {
+    if (isDropdown) {
+      setCatpion(itemValue);
+    }
+  };
 
   return items && (
     <div className={style.container}>
@@ -29,15 +34,16 @@ export const Tabs = ({items}) => {
           <button className={style.btn}
             onClick={() => setDropdownOpen(!isDropdownOpen)}
           >
-            Menu
+            {caption}
           </button>
         </div>
       )}
 
       {(isDropdownOpen || !isDropdown) && (
-        <ul className={style.list} onClick={setDropdownOpen(false)}>
+        <ul className={style.list} onClick={() => setDropdownOpen(false)}>
           {items.map(({id, value, link}) => (
-            <Tab key={id} value={value} link={link} />
+            <Tab key={id} value={value} link={link}
+              onClick={() => onItemClick(value)} />
           ))}
         </ul>
       )}
