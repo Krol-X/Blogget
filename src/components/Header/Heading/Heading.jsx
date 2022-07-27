@@ -1,10 +1,11 @@
 import style from './Heading.module.css';
 import PropTypes from 'prop-types';
+import Text from '../../_shared/Text';
 
 export const Heading = ({text}) => (
-  <h1 className={style.heading}>
+  <Text As='h1' className={style.heading}>
     {text || 'Blogget'}
-  </h1>
+  </Text>
 );
 
 Heading.propTypes = {

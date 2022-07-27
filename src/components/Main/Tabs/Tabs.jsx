@@ -1,10 +1,11 @@
 import style from './Tabs.module.css';
+import Text from '../../_shared/Text';
 
 export const Tabs = (props) => (
   <ul className={style.list}>
-    <li><a href='/'>Главная</a></li>
-    <li><a href='/'>Просмотренные</a></li>
-    <li><a href='/'>Сохранённые</a></li>
-    <li><a href='/'>Мои посты</a></li>
+    <li><Text As='a' href='/'>Главная</Text></li>
+    <li><Text As='a' href='/'>Просмотренные</Text></li>
+    <li><Text As='a' href='/'>Сохранённые</Text></li>
+    <li><Text As='a' href='/'>Мои посты</Text></li>
   </ul>
 );

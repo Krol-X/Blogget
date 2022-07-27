@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import style from './Text.module.css';
 import classNames from 'classnames';
 
-export const Text = (props) => (
+export const Text = (props) => {
   const {
     As = 'span',
     color = 'black',
@@ -25,7 +25,7 @@ export const Text = (props) => (
   );
 
   return <As className={classes} href={href}>{children}</As>;
-);
+};
 
 Text.propTypes = {
   As: PropTypes.string,
