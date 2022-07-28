@@ -1,9 +1,7 @@
 import {reddit} from '../../config';
 
-export const beApiRequest = (path) => {
-  return (token) => {
-    let result = {};
-
+export const beApiRequest = (path) =>
+  (token) =>
     fetch(`${reddit.url.api}${path}`, {
       headers: {
         Authorization: `bearer ${token}`
@@ -11,10 +9,6 @@ export const beApiRequest = (path) => {
     })
       .then(resp => resp.json())
       .then(data => {
-        console.log(data);
-        result = data;
+        console.log(`API: ${path}`, data);
+        return data;
       });
-
-    return result;
-  };
-};
