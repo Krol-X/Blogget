@@ -41,8 +41,8 @@ export const Tabs = ({items}) => {
 
       {(isDropdownOpen || !isDropdown) && (
         <ul className={style.list} onClick={() => setDropdownOpen(false)}>
-          {items.map(({id, value, link}) => (
-            <Tab key={id} value={value} link={link}
+          {items.map(({id, value, icon, link}) => (
+            <Tab key={id} value={value} Icon={icon} link={link}
               onClick={() => onItemClick(value)} />
           ))}
         </ul>
