@@ -1,6 +1,7 @@
 import style from './Tabs.module.css';
 import PropTypes from 'prop-types';
 import {useState, useEffect} from 'react';
+import {ReactComponent as ArrowIcon} from './images/arrow.svg';
 
 import Tab from './Tab';
 
@@ -35,6 +36,7 @@ export const Tabs = ({items}) => {
             onClick={() => setDropdownOpen(!isDropdownOpen)}
           >
             {caption}
+            <ArrowIcon width={18} height={24} />
           </button>
         </div>
       )}

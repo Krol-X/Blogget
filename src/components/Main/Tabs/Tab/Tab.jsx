@@ -16,5 +16,5 @@ Tab.propTypes = {
   value: PropTypes.string,
   link: PropTypes.string,
   onClick: PropTypes.func,
-  Icon: PropTypes.element
+  Icon: PropTypes.object
 };
