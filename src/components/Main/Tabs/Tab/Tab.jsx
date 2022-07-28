@@ -5,7 +5,7 @@ import Text from '../../../_shared/Text';
 
 export const Tab = ({value, Icon, link, onClick}) => (
   <li className={style.item}>
-    <Text As="button" className={pstyle.btn} onClick={onClick}>
+    <Text As='button' className={pstyle.btn} onClick={onClick}>
       {value}
       {Icon && <Icon width={24} height={24} />}
     </Text>
