@@ -8,18 +8,18 @@ export default (defaultToken) => {
     const newToken = getTokenFromLocation();
 
     if (newToken) {
+      console.log('NEW TOKEN:', newToken);
       setToken(newToken);
     } else {
       const storageToken = localStorage.getItem('bearer');
       if (storageToken && typeof storageToken === 'string') {
-        console.log(storageToken);
+        console.log('USE LOCAL TOKEN:', storageToken);
         setToken(storageToken);
       }
     }
   }, []);
 
   useEffect(() => {
-    console.log(token);
     if (token) {
       localStorage.setItem('bearer', token);
     }
