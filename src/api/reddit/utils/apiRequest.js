@@ -11,4 +11,7 @@ export const beApiRequest = (path) =>
       .then(data => {
         console.log(`API: ${path}`, data);
         return data;
-      });
+      })
+      .catch(err =>
+        console.error(err)
+      );

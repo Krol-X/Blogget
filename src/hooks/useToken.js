@@ -6,21 +6,29 @@ export default (defaultToken) => {
 
   useEffect(() => {
     const newToken = getTokenFromLocation();
+
     if (newToken) {
       setToken(newToken);
+    } else {
+      const storageToken = localStorage.getItem('bearer');
+      if (storageToken && typeof storageToken === 'string') {
+        console.log(storageToken);
+        setToken(storageToken);
+      }
     }
-
-    if (localStorage.getItem('bearer')) {
-      setToken(localStorage.getItem('bearer'));
-    }
-    console.log(token);
   }, []);
 
   useEffect(() => {
+    console.log(token);
     if (token) {
       localStorage.setItem('bearer', token);
     }
   }, [token]);
 
-  return [token];
+  const delToken = () => {
+    setToken('');
+    localStorage.setItem('bearer', '');
+  };
+
+  return [token, delToken];
 };
