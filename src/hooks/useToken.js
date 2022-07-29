@@ -4,6 +4,11 @@ import {getTokenFromLocation} from '../api/reddit/authService';
 export default (defaultToken) => {
   const [token, setToken] = useState(defaultToken);
 
+  const clearToken = () => {
+    setToken('');
+    localStorage.setItem('bearer', '');
+  };
+
   useEffect(() => {
     const newToken = getTokenFromLocation();
 
@@ -25,10 +30,5 @@ export default (defaultToken) => {
     }
   }, [token]);
 
-  const delToken = () => {
-    setToken('');
-    localStorage.setItem('bearer', '');
-  };
-
-  return [token, delToken];
+  return [token, clearToken];
 };

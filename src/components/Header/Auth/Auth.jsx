@@ -1,16 +1,20 @@
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import style from './Auth.module.css';
-import PropTypes from 'prop-types';
 import {ReactComponent as LoginIcon} from './images/login.svg';
 import {getUrlAuth} from '../../../api/reddit/authService';
 import Text from '../../_shared/Text';
+import {tokenContext} from '../../../context/tokenContext';
+import {authContext} from '../../../context/authContext';
 
-export const Auth = ({auth, delToken}) => {
+export const Auth = () => {
   const [isLogoutBtnShow, setLogoutBtnShow] = useState(false);
+  const {clearToken} = useContext(tokenContext);
+  const {auth, clearAuth} = useContext(authContext);
 
   const onLogout = () => {
     location = '/';
-    delToken();
+    clearToken();
+    clearAuth();
   };
 
   return (
@@ -38,9 +42,4 @@ export const Auth = ({auth, delToken}) => {
       )}
     </div>
   );
-};
-
-Auth.propTypes = {
-  auth: PropTypes.object,
-  delToken: PropTypes.func
 };

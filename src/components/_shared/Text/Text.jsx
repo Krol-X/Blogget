@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import style from './Text.module.css';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export const Text = (props) => {

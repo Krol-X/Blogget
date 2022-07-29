@@ -7,7 +7,13 @@ export const beApiRequest = (path) =>
         Authorization: `bearer ${token}`
       }
     })
-      .then(resp => resp.json())
+      .then(resp => {
+        const status = resp.status;
+        if (status === 401) {
+          throw new Error(status);
+        }
+        return resp.json();
+      })
       .then(data => {
         console.log(`API: ${path}`, data);
         return data;
