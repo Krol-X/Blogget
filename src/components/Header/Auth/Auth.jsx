@@ -12,14 +12,13 @@ export const Auth = () => {
   const {auth, clearAuth} = useContext(authContext);
 
   const onLogout = () => {
-    location = '/';
     clearToken();
     clearAuth();
   };
 
   return (
     <div className={style.container}>
-      {auth.name ? (
+      {(auth && auth.name) ? (
         <>
           <button className={style.btn}
             onClick={() => setLogoutBtnShow(!isLogoutBtnShow)}

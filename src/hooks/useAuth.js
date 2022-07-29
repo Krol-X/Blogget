@@ -2,7 +2,7 @@ import {useState, useEffect, useContext} from 'react';
 import {tokenContext} from '../context/tokenContext';
 import {redditMe} from '../api/reddit/identityService';
 
-export default (defaultToken) => {
+export default () => {
   const [auth, setAuth] = useState({});
   const {token, clearToken} = useContext(tokenContext);
 

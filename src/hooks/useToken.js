@@ -15,6 +15,7 @@ export default (defaultToken) => {
     if (newToken) {
       console.log('NEW TOKEN:', newToken);
       setToken(newToken);
+      history.replaceState(null, document.title, '/');
     } else {
       const storageToken = localStorage.getItem('bearer');
       if (storageToken && typeof storageToken === 'string') {
