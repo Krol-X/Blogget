@@ -1,4 +1,4 @@
-import {myreddit} from './myconfig';
+import myconfig from './myconfig';
 const env = process.env;
 
 export const reddit = {
@@ -8,7 +8,7 @@ export const reddit = {
     redirect: 'http://localhost:3000/auth'
   },
   user: {
-    client_id: env.CLIENT_ID || myreddit.client_id,
-    scope: myreddit.scope || 'identity read submit'
+    client_id: env.CLIENT_ID || myconfig.reddit_client_id,
+    scope: myconfig.reddit_scope || 'identity read submit'
   }
 };

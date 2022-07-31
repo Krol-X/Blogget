@@ -1,4 +1,5 @@
 import {reddit} from '../../config';
+import {unauthorizedError} from '../../../error/apiError';
 
 export const beApiRequest = (path) =>
   (token) =>
@@ -8,9 +9,8 @@ export const beApiRequest = (path) =>
       }
     })
       .then(resp => {
-        const status = resp.status;
-        if (status === 401) {
-          throw new Error(status);
+        if (resp.status === 401) {
+          throw unauthorizedError('Пользователь не авторизован');
         }
         return resp.json();
       })

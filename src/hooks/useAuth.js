@@ -1,25 +1,13 @@
-import {useState, useEffect, useContext} from 'react';
-import {tokenContext} from '../context/tokenContext';
+import {beRedditHook} from './base/redditHookFact';
 import {redditMe} from '../api/reddit/identityService';
 
-export default () => {
-  const [auth, setAuth] = useState({});
-  const {token, clearToken} = useContext(tokenContext);
+async function onToken({token, setValue}) {
+  if (!token) return;
 
-  const clearAuth = () => setAuth({});
+  redditMe(token).then(({name, icon_img: iconImg}) => {
+    const img = iconImg.replace(/\?.*$/, '');
+    setValue({name, img});
+  });
+}
 
-  useEffect(() => {
-    if (!token) return;
-
-    redditMe(token).then(({name, icon_img: iconImg}) => {
-      const img = iconImg.replace(/\?.*$/, '');
-      setAuth({name, img});
-    }).catch(err => {
-      console.error(err);
-      clearToken();
-      clearAuth();
-    });
-  }, [token]);
-
-  return [auth, clearAuth];
-};
+export default beRedditHook({onToken});

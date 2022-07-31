@@ -1,20 +1,7 @@
-import {createContext} from 'react';
-import PropTypes from 'prop-types';
+import beBaseContext from './base/baseContextFact';
 import useAuth from '../hooks/useAuth';
 
-export const authContext = createContext({});
+const [authContext, AuthContextProvider] =
+  beBaseContext(useAuth, {});
 
-export const AuthContextProvider = ({children}) => {
-  const [auth, clearAuth] = useAuth({});
-  const {Provider} = authContext;
-
-  return (
-    <Provider value={{auth, clearAuth}}>
-      {children}
-    </Provider>
-  );
-};
-
-AuthContextProvider.propTypes = {
-  children: PropTypes.node.isRequired
-};
+export {authContext, AuthContextProvider};

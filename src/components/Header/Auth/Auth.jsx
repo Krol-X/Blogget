@@ -8,8 +8,8 @@ import {authContext} from '../../../context/authContext';
 
 export const Auth = () => {
   const [isLogoutBtnShow, setLogoutBtnShow] = useState(false);
-  const {clearToken} = useContext(tokenContext);
-  const {auth, clearAuth} = useContext(authContext);
+  const clearToken = useContext(tokenContext)[1];
+  const [auth, clearAuth] = useContext(authContext);
 
   const onLogout = () => {
     clearToken();

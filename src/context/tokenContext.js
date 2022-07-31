@@ -1,21 +1,7 @@
-import {createContext} from 'react';
-import PropTypes from 'prop-types';
+import beBaseContext from './base/baseContextFact';
 import useToken from '../hooks/useToken';
 
-export const tokenContext = createContext({});
+const [tokenContext, TokenContextProvider] =
+  beBaseContext(useToken, '');
 
-export const TokenContextProvider = ({children}) => {
-  const [token, clearToken] = useToken('');
-  const {Provider} = tokenContext;
-
-  return (
-    <Provider value={{token, clearToken}}>
-      {children}
-    </Provider>
-  );
-};
-
-TokenContextProvider.propTypes = {
-  children: PropTypes.node.isRequired
-};
-
+export {tokenContext, TokenContextProvider};

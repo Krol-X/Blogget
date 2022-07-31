@@ -1,3 +1,3 @@
-import {beApiRequest} from './utils/apiRequest';
+import {beApiRequest} from './base/apiRequestFact';
 
 export const redditBest = beApiRequest('/best');
