@@ -1,4 +1,4 @@
-import {reddit} from '../config';
+import {reddit} from '../../config';
 
 export const getTokenFromLocation = () => {
   let token = '';

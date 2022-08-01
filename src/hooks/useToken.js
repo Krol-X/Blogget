@@ -6,7 +6,7 @@ export default (defaultToken) => {
 
   const clearToken = () => {
     setToken('');
-    localStorage.setItem('bearer', '');
+    localStorage.removeItem('bearer');
   };
 
   useEffect(() => {

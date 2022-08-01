@@ -1,4 +1,4 @@
-import {reddit} from '../../config';
+import {reddit} from '../../../config';
 import {unauthorizedError} from '../../../error/apiError';
 
 export const beApiRequest = (path) =>
@@ -17,7 +17,4 @@ export const beApiRequest = (path) =>
       .then(data => {
         console.log(`API: ${path}`, data);
         return data;
-      })
-      .catch(err =>
-        console.error(err)
-      );
+      });

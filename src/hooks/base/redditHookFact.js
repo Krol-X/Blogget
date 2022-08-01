@@ -1,7 +1,7 @@
 import {useState, useEffect, useContext} from 'react';
+import {isApiError, UNAUTHORIZED} from '../../error/apiError';
 import {tokenContext} from '../../context/tokenContext';
 import {authContext} from '../../context/authContext';
-import {isApiError, UNAUTHORIZED} from '../../error/apiError';
 
 export const beRedditHook = ({noneValue, onInit, onToken, onError}) =>
   (defaultValue) => {
@@ -13,7 +13,7 @@ export const beRedditHook = ({noneValue, onInit, onToken, onError}) =>
 
     const initHandler = onInit || (async () => {});
     const tokenHandler = onToken || (async () => {});
-    const errorHandler = onError || ((err) => {
+    const errorHandler = onError || (({err}) => {
       console.error(err);
       if (isApiError(err, UNAUTHORIZED)) {
         clearToken();
@@ -21,12 +21,16 @@ export const beRedditHook = ({noneValue, onInit, onToken, onError}) =>
       }
     });
 
-    const privArgs = {value, setValue, clearValue, token};
+    const privArgs = {value, setValue, clearValue, token, clearToken};
     useEffect(() => {
-      initHandler(privArgs).catch(errorHandler);
+      initHandler(privArgs).catch(
+        (err) => errorHandler({...privArgs, error: err})
+      );
     }, []);
     useEffect(() => {
-      tokenHandler(privArgs).catch(errorHandler);
+      tokenHandler(privArgs).catch(
+        (err) => errorHandler({...privArgs, error: err})
+      );
     }, [token]);
 
     return [value, clearValue];
