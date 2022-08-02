@@ -9,7 +9,7 @@ export const List = () => {
   const [posts] = useContext(postsContext);
 
   return (
-    posts.length && posts.map(({data: post}) => {
+    (posts.length > 0) && posts.map(({data: post}) => {
       const randId = post.link_flair_template_id + generateRandomId();
 
       return (

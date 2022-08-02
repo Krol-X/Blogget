@@ -8,11 +8,14 @@ import Rating from './Rating';
 import DateTime from './DateTime';
 
 export const Post = ({postData}) => {
-  const {title, author, ups, created_utc: date} = postData;
+  const {
+    title, author,
+    ups, created_utc: date
+  } = postData;
 
   return (
     <li className={style.post}>
-      <Image />
+      <Image postData={postData} />
       <Content title={title} author={author} />
       <DeleteButton />
       <Rating ups={ups} />
