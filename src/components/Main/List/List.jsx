@@ -1,17 +1,22 @@
 import style from './List.module.css';
+import {useContext} from 'react';
+import {postsContext} from '../../../context/postsContext';
+import {generateRandomId} from '../../../utils/random';
 
 import Post from './Post';
 
-const postData = {
-  thumbnail: '',
-  title: 'Title',
-  author: 'nickname',
-  ups: 24,
-  date: '2022-02-04T01:45:00.000Z'
-};
+export const List = () => {
+  const [posts] = useContext(postsContext);
 
-export const List = (props) => (
-  <ul className={style.list}>
-    <Post postData={postData} />
-  </ul>
-);
+  return (
+    posts && posts.map(({data: post}) => {
+      const randId = post.link_flair_template_id + generateRandomId();
+
+      return (
+        <ul key={randId} className={style.list}>
+          <Post postData={post} />
+        </ul>
+      );
+    })
+  );
+};

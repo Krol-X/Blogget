@@ -4,7 +4,7 @@ const env = process.env;
 export const reddit = {
   url: {
     auth: 'https://www.reddit.com/api/v1/authorize?',
-    api: 'https://oauth.reddit.com/api/v1',
+    api: 'https://oauth.reddit.com',
     redirect: 'http://localhost:3000/auth'
   },
   user: {

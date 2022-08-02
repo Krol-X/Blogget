@@ -1,5 +1,6 @@
 import {TokenContextProvider} from './context/tokenContext';
 import {AuthContextProvider} from './context/authContext';
+import {PostsContextProvider} from './context/postsContext';
 
 import Header from './components/Header';
 import Main from './components/Main';
@@ -7,8 +8,10 @@ import Main from './components/Main';
 const App = () => (
   <TokenContextProvider>
     <AuthContextProvider>
-      <Header />
-      <Main />
+      <PostsContextProvider>
+        <Header />
+        <Main />
+      </PostsContextProvider>
     </AuthContextProvider>
   </TokenContextProvider>
 );

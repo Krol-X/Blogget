@@ -8,7 +8,7 @@ import Rating from './Rating';
 import DateTime from './DateTime';
 
 export const Post = ({postData}) => {
-  const {title, author, ups, date} = postData;
+  const {title, author, ups, created} = postData;
 
   return (
     <li className={style.post}>
@@ -16,7 +16,7 @@ export const Post = ({postData}) => {
       <Content title={title} author={author} />
       <DeleteButton />
       <Rating ups={ups} />
-      <DateTime date={date} />
+      <DateTime date={created} />
     </li>
   );
 };
