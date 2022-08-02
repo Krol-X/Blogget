@@ -28,7 +28,7 @@ export const Tabs = ({items}) => {
     }
   };
 
-  return items && (
+  return (items && items.length) && (
     <div className={style.container}>
       {isDropdown && (
         <div className={style.wrapperBtn}>

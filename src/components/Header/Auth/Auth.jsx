@@ -5,15 +5,18 @@ import {getUrlAuth} from '../../../api/reddit/authService';
 import Text from '../../_shared/Text';
 import {tokenContext} from '../../../context/tokenContext';
 import {authContext} from '../../../context/authContext';
+import {postsContext} from '../../../context/postsContext';
 
 export const Auth = () => {
   const [isLogoutBtnShow, setLogoutBtnShow] = useState(false);
   const clearToken = useContext(tokenContext)[1];
   const [auth, clearAuth] = useContext(authContext);
+  const clearPosts = useContext(postsContext)[1];
 
   const onLogout = () => {
     clearToken();
     clearAuth();
+    clearPosts();
   };
 
   return (

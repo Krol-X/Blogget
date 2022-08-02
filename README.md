@@ -13,7 +13,7 @@
 ## TODO
 - [x] Improve error capturing
 - [x] Make base for context and hooks
-- [ ] Add Top posts reading
+- [x] Add Top posts reading
 
 ## Запуск проекта
 1. Создайте файл "myconfig.js" с токеном к вашему аккаунту reddit
