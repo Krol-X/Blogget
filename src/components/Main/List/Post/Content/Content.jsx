@@ -5,7 +5,7 @@ import Text from '../../../../_shared/Text';
 
 import Modal from '../../../../Modal';
 
-export const Content = ({title, author}) => {
+export const Content = ({title, markdown, author}) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   return (
@@ -28,6 +28,7 @@ export const Content = ({title, author}) => {
       {isModalOpen &&
         <Modal
           title={title}
+          markdown={markdown}
           author={author}
           onClose={() => setModalOpen(false)}
         />
@@ -38,5 +39,6 @@ export const Content = ({title, author}) => {
 
 Content.propTypes = {
   title: PropTypes.string,
+  markdown: PropTypes.string,
   author: PropTypes.string
 };
