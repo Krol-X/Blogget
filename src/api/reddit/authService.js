@@ -1,4 +1,5 @@
 import {reddit} from '../../config';
+import {createUrl} from '../../utils/url';
 
 export const getTokenFromLocation = () => {
   let token = '';
@@ -11,11 +12,13 @@ export const getTokenFromLocation = () => {
 };
 
 export const getUrlAuth = () => {
-  const params = new URLSearchParams('');
-  params.append('client_id', reddit.user.client_id);
-  params.append('response_type', 'token');
-  params.append('state', 'random_string');
-  params.append('redirect_uri', reddit.url.redirect);
-  params.append('scope', reddit.user.scope);
-  return `${reddit.url.auth}${params.toString()}`;
+  const {url, user} = reddit;
+
+  return createUrl(url.auth, {
+    'client_id': user.client_id,
+    'response_type': 'token',
+    'state': 'random_string',
+    'redirect_uri': url.redirect,
+    'scope': user.scope,
+  });
 };
