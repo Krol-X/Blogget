@@ -1,6 +1,6 @@
 import style from './Modal.module.css';
 import PropTypes from 'prop-types';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {
   disableBodyScroll,
@@ -13,16 +13,23 @@ import Comments from './Comments';
 import FormComment from './FormComment';
 
 export const Modal = ({title, markdown, author, onClose}) => {
+  const [isFormCommentOpen, setFormComentOpen] = useState(false);
+
   useEffect(() => {
+    // Disable scrool on root
     const targetElement = document.querySelector('#modal-root');
     disableBodyScroll(targetElement);
 
+    // Set [Esc] key handler
     const onEscapeDown = (e) => {
       if (e.keyCode === 27) {
         onClose();
       }
     };
     window.addEventListener('keyup', onEscapeDown);
+
+    // Loading post comments
+    // todo...
 
     return () => {
       clearAllBodyScrollLocks();
@@ -49,7 +56,12 @@ export const Modal = ({title, markdown, author, onClose}) => {
 
         <p className={style.author}>by {author}</p>
 
-        <FormComment />
+        <button className={style.btn} onClick={
+          () => setFormComentOpen(!isFormCommentOpen)
+        }>
+          Новый комментарий
+        </button>
+        {isFormCommentOpen && <FormComment />}
         <Comments />
 
         <button className={style.close} onClick={onClose}>

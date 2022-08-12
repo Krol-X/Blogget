@@ -117,3 +117,5 @@ iframe {
   width: 1px;
   overflow: hidden;
 }
+
+.ms-auto { margin-left: auto; }
