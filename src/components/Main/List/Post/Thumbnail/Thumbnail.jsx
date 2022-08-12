@@ -1,9 +1,9 @@
-import style from './Image.module.css';
+import style from './Thumbnail.module.css';
 import PropTypes from 'prop-types';
 import getPostThumbnail from '../../../../../api/reddit/utils/getPostThumbnail';
 import notphoto from './images/notphoto.jpg';
 
-export const Image = ({postData}) => {
+export const Thumbnail = ({postData}) => {
   const imageSrc = getPostThumbnail(postData) || notphoto;
 
   return (
@@ -13,6 +13,6 @@ export const Image = ({postData}) => {
   );
 };
 
-Image.propTypes = {
+Thumbnail.propTypes = {
   postData: PropTypes.object
 };
