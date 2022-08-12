@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "body-scroll-lock": "^4.0.0-beta.0",
+    "check-types": "^11.1.2",
     "classnames": "^2.3.1",
     "hygen": "^6.2.7",
     "markdown-to-jsx": "^7.1.7",

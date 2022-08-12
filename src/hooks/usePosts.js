@@ -5,7 +5,7 @@ async function onToken({token, setValue}) {
   if (!token) return;
 
   return redditBest(token).then((resp) => {
-    setValue(resp.data.children);
+    setValue(resp?.data?.children);
   });
 }
 
