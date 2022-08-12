@@ -9,14 +9,13 @@ export const List = () => {
   const [posts] = useContext(postsContext);
 
   return (
-    (posts.length > 0) && posts.map(({data: post}) => {
-      const randId = post.link_flair_template_id + generateRandomId();
-
-      return (
-        <ul key={randId} className={style.list}>
-          <Post postData={post} />
-        </ul>
-      );
-    })
+    <ul className={style.list}>
+      {(posts.length > 0) && posts.map(({data: post}) => {
+        const randId = post.link_flair_template_id + generateRandomId();
+        return (
+          <Post key={randId} postData={post} />
+        );
+      })}
+    </ul>
   );
 };

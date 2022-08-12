@@ -7,7 +7,9 @@ export const Image = ({postData}) => {
   const imageSrc = getPostThumbnail(postData) || notphoto;
 
   return (
-    <img className={style.img} src={imageSrc} alt='Нет фотографии' />
+    <div className={style.wrapper}>
+      <img className={style.img} src={imageSrc} alt='Нет фотографии' />
+    </div>
   );
 };
 

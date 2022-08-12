@@ -14,6 +14,7 @@
   color: #2d2d2d;
   margin-bottom: 10px;
   transition: color 0.36s ease-in-out;
+  max-width: calc(100% - 36px);
 }
 
 .linkPost:after {
