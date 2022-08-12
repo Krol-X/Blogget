@@ -11,6 +11,7 @@ export const reddit = {
     verbose: env.VERBOSE || myconfig.verbose || false,
     client_id: env.CLIENT_ID || myconfig.reddit_client_id,
     scope: myconfig.reddit_scope || 'identity read submit',
+    showToken: myconfig.showToken || false,
     useStrictMode: myconfig.useStrictMode || false,
     useTestApi: myconfig.useTestApi || false
   }
