@@ -2,18 +2,30 @@ import style from './Modal.module.css';
 import PropTypes from 'prop-types';
 import {useEffect} from 'react';
 import {createPortal} from 'react-dom';
-import {ReactComponent as CloseIcon} from './images/close.svg';
+import {
+  disableBodyScroll,
+  clearAllBodyScrollLocks
+} from 'body-scroll-lock';
 import Markdown from 'markdown-to-jsx';
+
+import {ReactComponent as CloseIcon} from './images/close.svg';
+import Comments from './Comments';
+import FormComment from './FormComment';
 
 export const Modal = ({title, markdown, author, onClose}) => {
   useEffect(() => {
+    const targetElement = document.querySelector('#modal-root');
+    disableBodyScroll(targetElement);
+
     const onEscapeDown = (e) => {
       if (e.keyCode === 27) {
         onClose();
       }
     };
     window.addEventListener('keyup', onEscapeDown);
+
     return () => {
+      clearAllBodyScrollLocks();
       window.removeEventListener('keyup', onEscapeDown);
     };
   }, []);
@@ -37,7 +49,8 @@ export const Modal = ({title, markdown, author, onClose}) => {
 
         <p className={style.author}>by {author}</p>
 
-        {/* FormComment && Comments */}
+        <FormComment />
+        <Comments />
 
         <button className={style.close} onClick={onClose}>
           <CloseIcon />
