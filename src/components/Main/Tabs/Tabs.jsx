@@ -1,5 +1,6 @@
 import style from './Tabs.module.css';
 import PropTypes from 'prop-types';
+import typeis from 'check-types';
 import {useState, useEffect} from 'react';
 import {ReactComponent as ArrowIcon} from './images/arrow.svg';
 
@@ -28,7 +29,7 @@ export const Tabs = ({items}) => {
     }
   };
 
-  return (items && items.length) && (
+  return (typeis.nonEmptyArray(items)) && (
     <div className={style.container}>
       {isDropdown && (
         <div className={style.wrapperBtn}>

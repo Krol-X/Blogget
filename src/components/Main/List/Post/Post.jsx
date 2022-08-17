@@ -9,14 +9,15 @@ import DateTime from './DateTime';
 
 export const Post = ({postData}) => {
   const {
-    title, author, ups,
-    selftext: markdown, created_utc: date
+    id, title, author, ups, created_utc: date
   } = postData;
 
   return (
     <li className={style.post}>
       <Thumbnail postData={postData} />
-      <Content title={title} markdown={markdown} author={author} />
+      <Content
+        postId={id} title={title} author={author}
+      />
       <DeleteButton />
       <Rating ups={ups} />
       <DateTime date={date} />

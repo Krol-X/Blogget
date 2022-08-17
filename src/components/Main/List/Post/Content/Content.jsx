@@ -5,7 +5,7 @@ import Text from '../../../../_shared/Text';
 
 import Modal from '../../../../Modal';
 
-export const Content = ({title, markdown, author}) => {
+export const Content = ({postId, title, author}) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   return (
@@ -27,9 +27,7 @@ export const Content = ({title, markdown, author}) => {
       </Text>
       {isModalOpen &&
         <Modal
-          title={title}
-          markdown={markdown}
-          author={author}
+          postId={postId}
           onClose={() => setModalOpen(false)}
         />
       }
@@ -38,7 +36,7 @@ export const Content = ({title, markdown, author}) => {
 };
 
 Content.propTypes = {
+  postId: PropTypes.string,
   title: PropTypes.string,
-  markdown: PropTypes.string,
   author: PropTypes.string
 };

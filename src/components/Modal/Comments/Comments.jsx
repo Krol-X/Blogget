@@ -1,20 +1,32 @@
 import style from './Comments.module.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import typeis from 'check-types';
 import DateTime from '../../Main/List/Post/DateTime';
+import Markdown from 'markdown-to-jsx';
 
-export const Comments = (props) => (
-  <ul className={style.list}>
-    <li className={style.item}>
-      <h3 className={style.author} size={18} tsize={22}>Maks</h3>
-      <p className={style.comment} size={14} tsize={18}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Fugiat natus eaque modi!
-      </p>
-      <DateTime date='' />
-    </li>
-  </ul>
-);
+export const Comments = ({comments}) =>
+  typeis.nonEmptyArray(comments) && (
+    <ul className={style.list}>
+      {comments.map(({id, author, body, created_utc: date}) => (
+        <li key={id} className={style.item}>
+          <h3 className={style.author} size={18} tsize={22}>{author}</h3>
+          <div className={style.comment} size={14} tsize={18}>
+            <Markdown options={{
+              overrides: {
+                a: {
+                  props: {target: '_blank'}
+                }
+              }
+            }}>
+              {body || ''}
+            </Markdown>
+          </div>
+          <DateTime date={date} />
+        </li>
+      ))}
+    </ul>
+  );
 
-// Comments.propTypes = {
-// todo...
-// };
+Comments.propTypes = {
+  comments: PropTypes.array
+};

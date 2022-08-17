@@ -1,5 +1,6 @@
 import style from './List.module.css';
 import {useContext} from 'react';
+import typeis from 'check-types';
 import {postsContext} from '../../../context/postsContext';
 import {generateRandomId} from '../../../utils/random';
 
@@ -10,7 +11,7 @@ export const List = () => {
 
   return (
     <ul className={style.list}>
-      {(posts.length > 0) && posts.map(({data: post}) => {
+      {(typeis.nonEmptyArray(posts)) && posts.map(({data: post}) => {
         const randId = post.link_flair_template_id + generateRandomId();
         return (
           <Post key={randId} postData={post} />

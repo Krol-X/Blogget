@@ -1,5 +1,6 @@
 import style from './Modal.module.css';
 import PropTypes from 'prop-types';
+import typeis from 'check-types';
 import {useEffect, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {
@@ -12,8 +13,12 @@ import {ReactComponent as CloseIcon} from './images/close.svg';
 import Comments from './Comments';
 import FormComment from './FormComment';
 
-export const Modal = ({title, markdown, author, onClose}) => {
+import useComments from '../../hooks/useComments';
+
+export const Modal = ({postId, onClose}) => {
   const [isFormCommentOpen, setFormComentOpen] = useState(false);
+
+  const {post, comments} = useComments(postId);
 
   useEffect(() => {
     // Disable scrool on root
@@ -28,9 +33,6 @@ export const Modal = ({title, markdown, author, onClose}) => {
     };
     window.addEventListener('keyup', onEscapeDown);
 
-    // Loading post comments
-    // todo...
-
     return () => {
       clearAllBodyScrollLocks();
       window.removeEventListener('keyup', onEscapeDown);
@@ -40,33 +42,39 @@ export const Modal = ({title, markdown, author, onClose}) => {
   return createPortal(
     <div className={style.overlay}>
       <div className={style.modal}>
-        <h2 className={style.title}>{title}</h2>
+        {typeis.nonEmptyObject(post) && (
+          <>
+            <h2 className={style.title}>{post?.title}</h2>
 
-        <div className={style.content}>
-          <Markdown options={{
-            overrides: {
-              a: {
-                props: {target: '_blank'}
-              }
-            }
-          }}>
-            {markdown}
-          </Markdown>
-        </div>
+            <div className={style.content}>
+              <Markdown options={{
+                overrides: {
+                  a: {
+                    props: {target: '_blank'}
+                  }
+                }
+              }}>
+                {post?.selftext || ''}
+              </Markdown>
+            </div>
 
-        <p className={style.author}>by {author}</p>
+            <p className={style.author}>by {post?.author}</p>
 
-        <button className={style.btn} onClick={
-          () => setFormComentOpen(!isFormCommentOpen)
-        }>
-          Новый комментарий
-        </button>
-        {isFormCommentOpen && <FormComment />}
-        <Comments />
+            <button className={style.btn} onClick={
+              () => setFormComentOpen(!isFormCommentOpen)
+            }>
+              Новый комментарий
+            </button>
+            {isFormCommentOpen && <FormComment />}
+            <Comments comments={comments} />
 
-        <button className={style.close} onClick={onClose}>
-          <CloseIcon />
-        </button>
+            <button className={style.close} onClick={onClose}>
+              <CloseIcon />
+            </button>
+          </>
+        ) || (
+          <h2>Загрузка...</h2>
+        )}
       </div>
     </div>,
     document.getElementById('modal-root')
@@ -74,8 +82,6 @@ export const Modal = ({title, markdown, author, onClose}) => {
 };
 
 Modal.propTypes = {
-  title: PropTypes.string,
-  markdown: PropTypes.string,
-  author: PropTypes.string,
+  postId: PropTypes.string,
   onClose: PropTypes.func
 };
