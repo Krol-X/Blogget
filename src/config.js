@@ -12,7 +12,7 @@ const userConfig = {
   scope: myconfig.reddit_scope ?? 'identity read submit',
   showToken: myconfig.showToken ?? false,
   useStrictMode: myconfig.useStrictMode ?? false,
-  useTestApi: myconfig.useTestApi ?? true
+  useTestApi: myconfig.useTestApi ?? false
 };
 
 export {urlConfig, userConfig};
