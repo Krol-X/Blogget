@@ -1,8 +1,8 @@
-import style from './Content.module.css';
 import PropTypes from 'prop-types';
+
+import style from './Content.module.css';
 import {useState} from 'react';
 import Text from '../../../../_shared/Text';
-
 import Modal from '../../../../Modal';
 
 export const Content = ({postId, title, author}) => {

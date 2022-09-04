@@ -1,7 +1,7 @@
 import typeis from 'check-types';
 import tokenTypes from './tokenTypes';
-import {setStorageToken} from '../../utils/storageToken';
 const {SET, REMOVE} = tokenTypes;
+import {setStorageToken} from '../../utils/storageToken';
 
 const setToken = (state, action) => {
   const token = action.token;

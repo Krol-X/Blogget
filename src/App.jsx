@@ -1,9 +1,9 @@
-import {reddit} from './config';
-const {useTestApi} = reddit.user;
-import TestApi from './components/TestApi';
-
+import {userConfig} from './config';
+const {useTestApi} = userConfig;
 import {Provider} from 'react-redux';
 import {store} from './store';
+
+import TestApi from './components/TestApi';
 
 import Header from './components/Header';
 import Main from './components/Main';

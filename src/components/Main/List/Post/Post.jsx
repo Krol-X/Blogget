@@ -1,6 +1,6 @@
-import style from './Post.module.css';
 import PropTypes from 'prop-types';
 
+import style from './Post.module.css';
 import Thumbnail from './Thumbnail';
 import Content from './Content';
 import DeleteButton from './DeleteButton';

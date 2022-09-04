@@ -2,6 +2,7 @@ import {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {actions} from '../store';
 import {redditMe} from '../api/reddit/identity';
+
 import {useToken} from './useToken';
 
 export const useAuth = (

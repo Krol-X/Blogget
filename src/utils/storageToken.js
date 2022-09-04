@@ -1,7 +1,6 @@
+import {userConfig} from '../config';
+const {showToken} = userConfig;
 import typeis from 'check-types';
-
-import {reddit} from '../config';
-const {showToken} = reddit.user;
 
 export const getStorageToken = () => {
   const token = localStorage.getItem('bearer');

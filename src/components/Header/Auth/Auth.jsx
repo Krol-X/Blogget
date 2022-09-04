@@ -1,11 +1,12 @@
 import {useState} from 'react';
+import {actions} from '../../../store';
+import {getUrlAuth} from '../../../api/reddit/auth';
+
 import style from './Auth.module.css';
 import {ReactComponent as LoginIcon} from './images/login.svg';
-import {getUrlAuth} from '../../../api/reddit/auth';
-import Text from '../../_shared/Text';
-import {actions} from '../../../store';
-import {useAuth} from '../../../hooks/useAuth';
 import {useDispatch} from 'react-redux';
+import {useAuth} from '../../../hooks/useAuth';
+import Text from '../../_shared/Text';
 
 export const Auth = () => {
   const dispatch = useDispatch();

@@ -1,19 +1,18 @@
-import style from './Modal.module.css';
-import PropTypes from 'prop-types';
-import typeis from 'check-types';
 import {useEffect, useState} from 'react';
 import {createPortal} from 'react-dom';
+import PropTypes from 'prop-types';
+import typeis from 'check-types';
 import {
   disableBodyScroll,
   clearAllBodyScrollLocks
 } from 'body-scroll-lock';
-import Markdown from 'markdown-to-jsx';
 
+import style from './Modal.module.css';
 import {ReactComponent as CloseIcon} from './images/close.svg';
+import {usePost} from '../../hooks/usePost';
+import Markdown from 'markdown-to-jsx';
 import Comments from './Comments';
 import FormComment from './FormComment';
-
-import {usePost} from '../../hooks/usePost';
 
 export const Modal = ({postId, onClose}) => {
   const [isFormCommentOpen, setFormComentOpen] = useState(false);

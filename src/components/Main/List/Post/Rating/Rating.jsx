@@ -1,5 +1,6 @@
-import style from './Rating.module.css';
 import PropTypes from 'prop-types';
+
+import style from './Rating.module.css';
 import Text from '../../../../_shared/Text';
 
 export const Rating = ({ups}) => (

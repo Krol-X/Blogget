@@ -1,8 +1,8 @@
-import style from './List.module.css';
 import typeis from 'check-types';
 import {generateRandomId} from '../../../utils/random';
-import {usePosts} from '../../../hooks/usePosts';
 
+import style from './List.module.css';
+import {usePosts} from '../../../hooks/usePosts';
 import Post from './Post';
 
 export const List = () => {

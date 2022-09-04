@@ -1,6 +1,7 @@
-import style from './DateTime.module.css';
 import PropTypes from 'prop-types';
 import {formatDate} from '../../../../../utils/dateTime';
+
+import style from './DateTime.module.css';
 import Text from '../../../../_shared/Text';
 
 export const DateTime = ({date}) => {
