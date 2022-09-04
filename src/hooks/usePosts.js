@@ -3,12 +3,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import {actions} from '../store';
 import {redditBest} from '../api/reddit/read';
 
-import {useToken} from './useToken';
-
 export const usePosts = (
   () => {
     const dispatch = useDispatch();
-    const token = useToken();
+    const token = useSelector(state => state?.token);
     const posts = useSelector(state => state.posts);
 
     useEffect(() => {

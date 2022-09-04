@@ -16,9 +16,7 @@ const setToken = (state, action) => {
 };
 
 const removeToken = (state, action) => {
-  if (state.token) {
-    delete state.token;
-  }
+  delete state.token;
   setStorageToken();
   return state;
 };

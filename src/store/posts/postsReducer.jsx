@@ -1,5 +1,5 @@
 import postsTypes from './postsTypes';
-const {SET} = postsTypes;
+const {SET, REMOVE} = postsTypes;
 
 const set = (state, action) => {
   const result = {
@@ -9,8 +9,14 @@ const set = (state, action) => {
   return result;
 };
 
+const remove = (state, action) => {
+  delete state.posts;
+  return state;
+};
+
 const reducer = {
-  [SET]: set
+  [SET]: set,
+  [REMOVE]: remove
 };
 
 export default reducer;

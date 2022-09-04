@@ -14,9 +14,9 @@ export const Auth = () => {
   const auth = useAuth();
 
   const onLogout = () => {
-    dispatch(actions.token.set());
-    dispatch(actions.auth.set());
-    dispatch(actions.posts.set());
+    dispatch(actions.token.remove());
+    dispatch(actions.auth.remove());
+    dispatch(actions.posts.remove());
   };
 
   return (

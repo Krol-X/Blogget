@@ -7,3 +7,7 @@ export const set = (<%= store_name %>) => ({
   type: <%= store_name %>Types.SET,
   <%= store_name %>
 });
+
+export const remove = () => ({
+  type: <%= store_name %>.REMOVE
+});
