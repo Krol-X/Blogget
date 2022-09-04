@@ -1,11 +1,9 @@
 import {reddit} from './config';
 const {useTestApi} = reddit.user;
-
 import TestApi from './components/TestApi';
 
-import {TokenContextProvider} from './context/tokenContext';
-import {AuthContextProvider} from './context/authContext';
-import {PostsContextProvider} from './context/postsContext';
+import {Provider} from 'react-redux';
+import {store} from './store';
 
 import Header from './components/Header';
 import Main from './components/Main';
@@ -15,14 +13,10 @@ const TestApiApp = () => (
 );
 
 const MainApp = () => (
-  <TokenContextProvider>
-    <AuthContextProvider>
-      <PostsContextProvider>
-        <Header />
-        <Main />
-      </PostsContextProvider>
-    </AuthContextProvider>
-  </TokenContextProvider>
+  <Provider store={store}>
+    <Header />
+    <Main />
+  </Provider>
 );
 
 const App = useTestApi ? TestApiApp : MainApp;

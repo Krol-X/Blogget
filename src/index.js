@@ -8,10 +8,14 @@ const {useStrictMode} = reddit.user;
 
 const root = createRoot(document.getElementById('root'));
 
+const app = (
+  <App />
+);
+
 const withStrictMode = (
   <StrictMode>
-    <App />
+    {app}
   </StrictMode>
 );
 
-root.render(useStrictMode ? withStrictMode : (<App />));
+root.render(useStrictMode ? withStrictMode : app);

@@ -1,13 +1,12 @@
 import style from './List.module.css';
-import {useContext} from 'react';
 import typeis from 'check-types';
-import {postsContext} from '../../../context/postsContext';
 import {generateRandomId} from '../../../utils/random';
+import {usePosts} from '../../../hooks/usePosts';
 
 import Post from './Post';
 
 export const List = () => {
-  const [posts] = useContext(postsContext);
+  const posts = usePosts();
 
   return (
     <ul className={style.list}>

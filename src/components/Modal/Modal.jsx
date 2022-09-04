@@ -13,12 +13,12 @@ import {ReactComponent as CloseIcon} from './images/close.svg';
 import Comments from './Comments';
 import FormComment from './FormComment';
 
-import useComments from '../../hooks/useComments';
+import {usePost} from '../../hooks/usePost';
 
 export const Modal = ({postId, onClose}) => {
   const [isFormCommentOpen, setFormComentOpen] = useState(false);
 
-  const {post, comments} = useComments(postId);
+  const {post, comments} = usePost(postId);
 
   useEffect(() => {
     // Disable scrool on root

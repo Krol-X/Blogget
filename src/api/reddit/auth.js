@@ -1,14 +1,13 @@
 import {reddit} from '../../config';
-import {createUrl} from '../../utils/url';
+import {createUrl, getLocationParams} from '../../utils/url';
 
 export const getTokenFromLocation = () => {
-  let token = '';
+  let newToken = '';
   if (location.pathname.includes('/auth')) {
-    const locHash = location.hash.substring(1);
-    token = new URLSearchParams(locHash)
-      .get('access_token');
+    const params = getLocationParams();
+    newToken = params.get('access_token');
   }
-  return token;
+  return newToken;
 };
 
 export const getUrlAuth = () => {

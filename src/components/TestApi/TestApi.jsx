@@ -1,13 +1,13 @@
 // import style from './TestApi.module.css';
 // import PropTypes from 'prop-types';
 import {useEffect} from 'react';
-import {getTokenFromLocation, getUrlAuth} from '../../api/reddit/authService';
-import {redditMe} from '../../api/reddit/identityService';
+import {getTokenFromLocation, getUrlAuth} from '../../api/reddit/auth';
+import {redditMe} from '../../api/reddit/identity';
 import {
   redditBest,
   redditInfo,
   redditComments
-} from '../../api/reddit/readService';
+} from '../../api/reddit/read';
 // import {Parser} from '../../api/reddit/Parser';
 
 export const TestApi = (props) => {

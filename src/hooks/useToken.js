@@ -1,42 +1,26 @@
-import {reddit} from '../config';
-const {showToken} = reddit.user;
-import typeis from 'check-types';
-import {useState, useEffect} from 'react';
-import {getTokenFromLocation} from '../api/reddit/authService';
+import {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {actions} from '../store';
+import {getTokenFromLocation} from '../api/reddit/auth';
+import {replaceLocationTo} from '../utils/url';
+import {getStorageToken} from '../utils/storageToken';
 
-export default (defaultToken) => {
-  const [token, setToken] = useState(defaultToken);
+export const useToken = (
+  () => {
+    const dispatch = useDispatch();
+    const token = useSelector(state => state.token);
 
-  const clearToken = () => {
-    setToken('');
-    localStorage.removeItem('bearer');
-  };
-
-  useEffect(() => {
-    const newToken = getTokenFromLocation();
-
-    if (newToken) {
-      if (showToken) {
-        console.log('NEW TOKEN:', newToken);
+    useEffect(() => {
+      const newToken = getTokenFromLocation();
+      if (newToken) {
+        dispatch(actions.token.set(newToken));
+        replaceLocationTo('/');
+      } else {
+        const storageToken = getStorageToken();
+        dispatch(actions.token.set(storageToken));
       }
-      setToken(newToken);
-      history.replaceState(null, document.title, '/');
-    } else {
-      const storageToken = localStorage.getItem('bearer');
-      if (typeis.string(storageToken)) {
-        if (showToken) {
-          console.log('USE LOCAL TOKEN:', storageToken);
-        }
-        setToken(storageToken);
-      }
-    }
-  }, []);
+    }, []);
 
-  useEffect(() => {
-    if (token) {
-      localStorage.setItem('bearer', token);
-    }
-  }, [token]);
-
-  return [token, clearToken];
-};
+    return token;
+  }
+);
