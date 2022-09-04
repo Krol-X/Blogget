@@ -1,6 +1,6 @@
-import style from './Header.module.css';
 import PropTypes from 'prop-types';
 
+import style from './Header.module.css';
 import Layout from '../Layout';
 import Logo from './Logo';
 import Heading from './Heading';

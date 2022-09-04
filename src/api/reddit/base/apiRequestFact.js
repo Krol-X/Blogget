@@ -1,4 +1,4 @@
-import {reddit} from '../../../config';
+import {urlConfig, userConfig} from '../../../config';
 import {createUrl} from '../../../utils/url';
 import {unauthorizedError} from '../../../error/apiError';
 
@@ -6,7 +6,7 @@ const completeTail = (tail) => (!tail ? '' : `/${tail}`);
 
 export const beApiRequest = (path) =>
   (token, args, tail) =>
-    fetch(createUrl(`${reddit.url.api}${path}${completeTail(tail)}`, args), {
+    fetch(createUrl(`${urlConfig.api}${path}${completeTail(tail)}`, args), {
       headers: {
         Authorization: `bearer ${token}`
       }
@@ -18,7 +18,7 @@ export const beApiRequest = (path) =>
         return resp.json();
       })
       .then(data => {
-        if (reddit.user.verbose) {
+        if (userConfig.verbose) {
           console.log(`API: ${path}`, data);
         }
         return data;

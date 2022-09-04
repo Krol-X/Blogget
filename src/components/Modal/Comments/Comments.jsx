@@ -1,8 +1,9 @@
-import style from './Comments.module.css';
 import PropTypes from 'prop-types';
 import typeis from 'check-types';
-import DateTime from '../../Main/List/Post/DateTime';
+
+import style from './Comments.module.css';
 import Markdown from 'markdown-to-jsx';
+import DateTime from '../../Main/List/Post/DateTime';
 
 export const Comments = ({comments}) =>
   typeis.nonEmptyArray(comments) && (

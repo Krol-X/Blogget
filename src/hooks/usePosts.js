@@ -1,12 +1,24 @@
-import {beRedditHook} from './base/redditHookFact';
-import {redditBest} from '../api/reddit/readService';
+import {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {actions} from '../store';
+import {redditBest} from '../api/reddit/read';
 
-async function onToken({token, setValue}) {
-  if (!token) return;
+import {useToken} from './useToken';
 
-  return redditBest(token).then((resp) => {
-    setValue(resp?.data?.children);
-  });
-}
+export const usePosts = (
+  () => {
+    const dispatch = useDispatch();
+    const token = useToken();
+    const posts = useSelector(state => state.posts);
 
-export default beRedditHook({onToken});
+    useEffect(() => {
+      if (!token) return;
+
+      redditBest(token).then((resp) => {
+        dispatch(actions.posts.set(resp?.data?.children));
+      });
+    }, [token]);
+
+    return posts;
+  }
+);

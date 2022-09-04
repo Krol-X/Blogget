@@ -1,22 +1,25 @@
-import {beRedditHook} from './base/redditHookFact';
-import {redditMe} from '../api/reddit/identityService';
-import {isApiError, UNAUTHORIZED} from '../error/apiError';
+import {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {actions} from '../store';
+import {redditMe} from '../api/reddit/identity';
 
-async function onToken({token, setValue}) {
-  if (!token) return;
+import {useToken} from './useToken';
 
-  return redditMe(token).then(({name, icon_img: iconImg}) => {
-    const img = iconImg.replace(/\?.*$/, '');
-    setValue({name, img});
-  });
-}
+export const useAuth = (
+  () => {
+    const dispatch = useDispatch();
+    const token = useToken();
+    const auth = useSelector(state => state.auth);
 
-async function onError({error, clearValue, clearToken}) {
-  console.error(error);
-  if (isApiError(error, UNAUTHORIZED)) {
-    clearToken();
-    clearValue();
+    useEffect(() => {
+      if (!token) return;
+
+      redditMe(token).then(({name, icon_img: userIcon}) => {
+        const icon = userIcon.replace(/\?.*$/, '');
+        dispatch(actions.auth.set({name, icon}));
+      });
+    }, [token]);
+
+    return auth;
   }
-}
-
-export default beRedditHook({onToken, onError});
+);

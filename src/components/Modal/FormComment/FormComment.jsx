@@ -1,7 +1,6 @@
 import style from './FormComment.module.css';
 import pstyle from '../Modal.module.css';
 import {useEffect, useRef} from 'react';
-// import PropTypes from 'prop-types';
 
 export const FormComment = (props) => {
   const eTextArea = useRef();
@@ -18,7 +17,3 @@ export const FormComment = (props) => {
     </form>
   );
 };
-
-// FormComment.propTypes = {
-// todo...
-// };

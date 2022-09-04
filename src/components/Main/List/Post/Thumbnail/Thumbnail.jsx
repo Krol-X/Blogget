@@ -1,6 +1,7 @@
-import style from './Thumbnail.module.css';
 import PropTypes from 'prop-types';
 import getPostThumbnail from '../../../../../api/reddit/utils/getPostThumbnail';
+
+import style from './Thumbnail.module.css';
 import notphoto from './images/notphoto.jpg';
 
 export const Thumbnail = ({postData}) => {

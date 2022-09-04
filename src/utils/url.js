@@ -17,3 +17,13 @@ export const createUrl = (url, params) => {
   }
   return `${url}${tail}`;
 };
+
+export const getLocationParams = () => {
+  const locHash = location.hash.substring(1);
+  const params = new URLSearchParams(locHash);
+  return params;
+};
+
+export const replaceLocationTo = (url) => {
+  history.replaceState(null, document.title, url);
+};
