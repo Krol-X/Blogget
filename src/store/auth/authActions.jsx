@@ -1,11 +1,11 @@
-import authTypes from './authTypes';
+import {SET, REMOVE} from './authTypes';
 
 export const set = (auth) => ({
-  type: authTypes.SET,
-  auth
+  type: SET,
+  payload: auth
 });
 
 export const remove = () => ({
-  type: authTypes.REMOVE
+  type: REMOVE
 });
 

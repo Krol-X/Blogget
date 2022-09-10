@@ -1,22 +1,15 @@
-import postsTypes from './postsTypes';
-const {SET, REMOVE} = postsTypes;
+import {SET, REMOVE} from './postsTypes';
 
-const set = (state, action) => {
-  const result = {
-    ...state,
-    posts: action.posts
-  };
+const reducer = (state = [], {type, payload}) => {
+  let result = state;
+  switch (type) {
+    case SET:
+      result = payload;
+      break;
+    case REMOVE:
+      result = [];
+  }
   return result;
-};
-
-const remove = (state, action) => {
-  delete state.posts;
-  return state;
-};
-
-const reducer = {
-  [SET]: set,
-  [REMOVE]: remove
 };
 
 export default reducer;

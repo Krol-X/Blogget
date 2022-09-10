@@ -1,6 +1,2 @@
-const types = {
-  SET: 'POSTS_SET',
-  REMOVE: 'POSTS_REMOVE'
-};
-
-export default types;
+export const SET = 'POSTS_SET';
+export const REMOVE = 'POSTS_REMOVE';

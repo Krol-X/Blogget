@@ -1,27 +1,23 @@
 import typeis from 'check-types';
-import tokenTypes from './tokenTypes';
-const {SET, REMOVE} = tokenTypes;
+import {SET, REMOVE} from './tokenTypes';
 import {setStorageToken} from '../../utils/storageToken';
 
-const setToken = (state, action) => {
-  const token = action.token;
-  if (!typeis.nonEmptyString(token)) {
-    return state;
+const tokenReducer = (state = '', {type, payload}) => {
+  let result = state;
+  let token = '';
+  switch (type) {
+    case SET:
+      token = payload;
+      if (typeis.nonEmptyString(token)) {
+        setStorageToken(token);
+        result = token;
+      }
+      break;
+    case REMOVE:
+      setStorageToken();
+      result = '';
   }
-  setStorageToken(token);
-  return {
-    ...state,
-    token
-  };
+  return result;
 };
 
-const removeToken = (state, action) => {
-  delete state.token;
-  setStorageToken();
-  return state;
-};
-
-export default {
-  [SET]: setToken,
-  [REMOVE]: removeToken
-};
+export default tokenReducer;

@@ -1,6 +1,8 @@
+import {useEffect, useRef} from 'react';
+
 import style from './FormComment.module.css';
 import pstyle from '../Modal.module.css';
-import {useEffect, useRef} from 'react';
+import Text from '../../_shared/Text';
 
 export const FormComment = (props) => {
   const eTextArea = useRef();
@@ -11,7 +13,9 @@ export const FormComment = (props) => {
 
   return (
     <form className={style.form}>
-      <h3 size={14} tsize={18}>Имя авторизованного пользователя</h3>
+      <Text As='h3' size={14} tsize={18}>
+        Имя авторизованного пользователя
+      </Text>
       <textarea ref={eTextArea} className={style.textarea}></textarea>
       <button className={pstyle.btn + ' ms-auto'}>Отправить</button>
     </form>

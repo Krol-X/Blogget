@@ -1,4 +1,4 @@
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
 import Token from './token';
 import Auth from './auth';
 import Posts from './posts';
@@ -13,22 +13,18 @@ const actions = {
   post: Post.actions
 };
 
-const reducers = {
-  ...Token.reducer,
-  ...Auth.reducer,
-  ...Posts.reducer,
-  ...Post.reducer
-};
+const rootReducer = combineReducers({
+  token: Token.reducer,
+  auth: Auth.reducer,
+  posts: Posts.reducer,
+  post: Post.reducer
+});
 
-const rootReducer = (state = initalState, action) => {
-  const reducer = reducers[action.type] || (() => (state));
-  const result = reducer(state, action);
-  return result;
-};
+const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__;
 
 const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  rootReducer, initalState,
+  reduxDevTools && reduxDevTools()
 );
 
 export {actions, store};

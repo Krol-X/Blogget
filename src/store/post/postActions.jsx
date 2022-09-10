@@ -1,10 +1,10 @@
-import postTypes from './postTypes';
+import {SET, REMOVE} from './postTypes';
 
 export const set = (post, comments) => ({
-  type: postTypes.SET,
-  post, comments
+  type: SET,
+  payload: {post, comments}
 });
 
 export const remove = () => ({
-  type: postTypes.REMOVE
+  type: REMOVE
 });

@@ -1,22 +1,15 @@
-import authTypes from './authTypes';
-const {SET, REMOVE} = authTypes;
+import {SET, REMOVE} from './authTypes';
 
-const set = (state, action) => {
-  const result = {
-    ...state,
-    auth: action.auth
-  };
+const authReducer = (state = {}, {type, payload}) => {
+  let result = state;
+  switch (type) {
+    case SET:
+      result = payload;
+      break;
+    case REMOVE:
+      result = {};
+  }
   return result;
 };
 
-const remove = (state, action) => {
-  delete state.auth;
-  return state;
-};
-
-const reducer = {
-  [SET]: set,
-  [REMOVE]: remove
-};
-
-export default reducer;
+export default authReducer;

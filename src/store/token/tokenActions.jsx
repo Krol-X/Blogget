@@ -1,10 +1,10 @@
-import tokenTypes from './tokenTypes';
+import {SET, REMOVE} from './tokenTypes';
 
 export const set = (token) => ({
-  type: tokenTypes.SET,
-  token
+  type: SET,
+  payload: token
 });
 
 export const remove = () => ({
-  type: tokenTypes.REMOVE
+  type: REMOVE
 });

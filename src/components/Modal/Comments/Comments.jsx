@@ -3,6 +3,7 @@ import typeis from 'check-types';
 
 import style from './Comments.module.css';
 import Markdown from 'markdown-to-jsx';
+import Text from '../../_shared/Text';
 import DateTime from '../../Main/List/Post/DateTime';
 
 export const Comments = ({comments}) =>
@@ -10,8 +11,10 @@ export const Comments = ({comments}) =>
     <ul className={style.list}>
       {comments.map(({id, author, body, created_utc: date}) => (
         <li key={id} className={style.item}>
-          <h3 className={style.author} size={18} tsize={22}>{author}</h3>
-          <div className={style.comment} size={14} tsize={18}>
+          <Text As='h3' className={style.author} size={18} tsize={22}>
+            {author}
+          </Text>
+          <Text As='div' className={style.comment} size={14} tsize={18}>
             <Markdown options={{
               overrides: {
                 a: {
@@ -21,7 +24,7 @@ export const Comments = ({comments}) =>
             }}>
               {body || ''}
             </Markdown>
-          </div>
+          </Text>
           <DateTime date={date} />
         </li>
       ))}
