@@ -11,7 +11,7 @@ import Text from '../../_shared/Text';
 export const Auth = () => {
   const dispatch = useDispatch();
   const [isLogoutBtnShow, setLogoutBtnShow] = useState(false);
-  const auth = useAuth();
+  const {data: auth} = useAuth();
 
   const onLogout = () => {
     dispatch(actions.token.remove());

@@ -7,14 +7,15 @@ import {
 import {getStorageToken} from '../../utils/storageToken';
 
 const tokenReducer = (state = '', {type, payload}) => {
+  let result = state;
   switch (type) {
     case TOKEN_SUCCESS:
     case TOKEN_GET_FAILURE:
     case TOKEN_SET:
     case TOKEN_REMOVE:
-      return getStorageToken() || '';
+      result = getStorageToken() || '';
   }
-  return state;
+  return result;
 };
 
 export default tokenReducer;

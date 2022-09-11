@@ -6,7 +6,7 @@ import {usePosts} from '../../../hooks/usePosts';
 import Post from './Post';
 
 export const List = () => {
-  const posts = usePosts();
+  const {data: posts} = usePosts();
 
   return (
     <ul className={style.list}>

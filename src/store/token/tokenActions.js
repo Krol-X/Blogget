@@ -1,4 +1,4 @@
-import typeis from 'check-types';
+import {checkToken} from './index';
 import {getTokenFromLocation} from '../../api/reddit/auth';
 import {replaceLocationTo} from '../../utils/url';
 
@@ -13,9 +13,8 @@ export const success = (token) => ({
   payload: token
 });
 
-export const getFailure = (error) => ({
-  type: TOKEN_GET_FAILURE,
-  err: error
+export const getFailure = () => ({
+  type: TOKEN_GET_FAILURE
 });
 
 export const set = (token) => ({
@@ -32,7 +31,7 @@ export const request = () => (dispatch, getState) => {
   const newToken = getTokenFromLocation();
   const oldToken = getState().token;
   if (newToken !== oldToken) {
-    if (!typeis.null(newToken) && typeis.nonEmptyString(newToken)) {
+    if (checkToken(newToken)) {
       replaceLocationTo('/');
       dispatch(success(newToken));
     } else {
