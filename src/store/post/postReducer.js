@@ -1,15 +1,15 @@
-import {SET, REMOVE} from './postTypes';
+import {POST_SET, POST_REMOVE} from './postActions';
 
 const reducer = (state = {}, {type, payload}) => {
   let result = state;
   switch (type) {
-    case SET:
+    case POST_SET:
       result = {
         data: payload.post,
         comments: payload.comments
       };
       break;
-    case REMOVE:
+    case POST_REMOVE:
       result = {};
   }
   return result;

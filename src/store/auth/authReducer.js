@@ -1,12 +1,12 @@
-import {SET, REMOVE} from './authTypes';
+import {AUTH_SET, AUTH_REMOVE} from './authActions';
 
 const authReducer = (state = {}, {type, payload}) => {
   let result = state;
   switch (type) {
-    case SET:
+    case AUTH_SET:
       result = payload;
       break;
-    case REMOVE:
+    case AUTH_REMOVE:
       result = {};
   }
   return result;

@@ -1,8 +1,13 @@
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {composeWithDevTools} from '@redux-devtools/extension';
+
 import Token from './token';
 import Auth from './auth';
 import Posts from './posts';
 import Post from './post';
+
+import {logger} from '../middlewares/logger';
+import {tokenMiddleware} from './token/tokenMiddleware';
 
 const initalState = {};
 
@@ -20,11 +25,14 @@ const rootReducer = combineReducers({
   post: Post.reducer
 });
 
-const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__;
+const middlewares = [
+  logger,
+  tokenMiddleware
+];
 
 const store = createStore(
   rootReducer, initalState,
-  reduxDevTools && reduxDevTools()
+  composeWithDevTools(applyMiddleware(...middlewares))
 );
 
 export {actions, store};
