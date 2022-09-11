@@ -2,7 +2,7 @@ import {urlConfig, userConfig} from '../../config';
 import {createUrl, getLocationParams} from '../../utils/url';
 
 export const getTokenFromLocation = () => {
-  let newToken = '';
+  let newToken = null;
   if (location.pathname.includes('/auth')) {
     const params = getLocationParams();
     newToken = params.get('access_token');

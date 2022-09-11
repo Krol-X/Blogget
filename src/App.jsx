@@ -1,22 +1,17 @@
-import {userConfig} from './config';
-const {useTestApi} = userConfig;
-
-import TestApi from './components/TestApi';
-
 import Header from './components/Header';
 import Main from './components/Main';
 
-const TestApiApp = () => (
-  <TestApi />
-);
+import {useToken} from './hooks/useToken';
 
-const MainApp = () => (
-  <>
-    <Header />
-    <Main />
-  </>
-);
+const App = () => {
+  useToken();
 
-const App = useTestApi ? TestApiApp : MainApp;
+  return (
+    <>
+      <Header />
+      <Main />
+    </>
+  );
+};
 
 export default App;

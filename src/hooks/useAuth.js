@@ -3,12 +3,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import {actions} from '../store';
 import {redditMe} from '../api/reddit/identity';
 
-import {useToken} from './useToken';
-
 export const useAuth = (
   () => {
     const dispatch = useDispatch();
-    const token = useToken();
+    const token = useSelector(state => state.token);
     const auth = useSelector(state => state.auth);
 
     useEffect(() => {

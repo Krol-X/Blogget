@@ -6,6 +6,7 @@ import Auth from './auth';
 import Posts from './posts';
 import Post from './post';
 
+import thunk from 'redux-thunk';
 import {logger} from '../middlewares/logger';
 import {tokenMiddleware} from './token/tokenMiddleware';
 
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
 });
 
 const middlewares = [
+  thunk,
   logger,
   tokenMiddleware
 ];
